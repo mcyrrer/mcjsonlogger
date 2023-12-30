@@ -48,7 +48,7 @@ class LoggerSetup:
     def get_logger(self):
         if not self.logger:
             self.configure_logger()
-        return self.logger
+        return self.logger if self.logger else logging.getLogger()
 
 # Singleton pattern to ensure only one instance of the logger setup is used
 logger_setup_instance = LoggerSetup()
