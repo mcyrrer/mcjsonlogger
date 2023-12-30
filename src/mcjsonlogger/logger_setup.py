@@ -10,8 +10,10 @@ class JSONFormatter(logging.Formatter):
     def format(self, record):
         log_record = {
             "timestamp": self.formatTime(record),
-            "serverity": record.levelname,
+            "level": record.levelname,
             "message": record.getMessage(),
+            "filename": record.filename,
+            "lineno": record.lineno,
         }
 
         # Inject additional columns with non-empty values
