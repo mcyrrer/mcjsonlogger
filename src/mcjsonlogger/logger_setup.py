@@ -1,8 +1,18 @@
-# mylogger/setup/logger_setup.py
+# Filename: logger_setup.py
+# Author:   Mattias Gustavsson
+# Created:  2024-01-01
+# Modified: 2024-01-01
+# License:  MIT
+# Description:
+#   Set up a logger with a customized JSON formatter. 
+
 import logging
 import json
 
 class JSONFormatter(logging.Formatter):
+    """
+    Customized JSON formatter for logging.
+    """
     def __init__(self, *args, column_names=None, **kwargs):
         self.column_names = column_names or []
         super().__init__(*args, **kwargs)
@@ -53,6 +63,21 @@ class LoggerSetup:
 # Singleton pattern to ensure only one instance of the logger setup is used
 logger_setup_instance = LoggerSetup()
 
-def setup_and_get_logger(column_names=None):
+def setup_and_get_logger(column_names=None, level=logging.DEBUG):
+    """
+    Set up and get a logger instance.
+
+    Args:
+        column_names (list): Additional column names for the JSON log format.
+        level (int): Logging level (e.g., logging.DEBUG, logging.INFO).
+
+    Returns:
+        logging.Logger: Logger instance.
+    """
+    if column_names is None:
+        column_names = ['stacktrace']
+    else:
+        column_names.append('stacktrace')
     logger_setup_instance.column_names = column_names or []
+    logger_setup_instance.level = level
     return logger_setup_instance.get_logger()
