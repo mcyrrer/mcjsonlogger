@@ -1,12 +1,11 @@
 # tests/test_logger_setup.py
-import unittest
-import logging
 import json
+import logging
+import unittest
 from io import StringIO
-
 from unittest.mock import patch
 
-from src.mcjsonlogger.logger_setup import LoggerSetup, JSONFormatter, setup_and_get_logger
+from src.mcjsonlogger.logger_setup import JSONFormatter, LoggerSetup, setup_and_get_logger
 
 
 class TestLoggerSetup(unittest.TestCase):
@@ -87,7 +86,7 @@ class TestLoggerSetup(unittest.TestCase):
             self.assertIn('Test message', log_output['message'])
 
         finally:
-            logger.removeHandler(handler)            
+            logger.removeHandler(handler)
 
     def test_log_level(self):
         # Set up logger with a specific logging level

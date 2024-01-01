@@ -4,10 +4,11 @@
 # Modified: 2024-01-01
 # License:  MIT
 # Description:
-#   Set up a logger with a customized JSON formatter. 
+#   Set up a logger with a customized JSON formatter.
 
-import logging
 import json
+import logging
+
 
 class JSONFormatter(logging.Formatter):
     """

@@ -1,2 +1,6 @@
-hatchling
+hatch
 bumpver
+setuptools
+wheel
+build
+twine
